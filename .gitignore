@@ -1,0 +1,200 @@
+# Dependencias y directorios de vendor
+/vendor/
+/node_modules/
+
+# Archivos de entorno y configuración
+.env
+.env.*
+!.env.example
+config.php
+
+# Archivos de caché y logs
+/logs/
+*.log
+*.cache
+.phpunit.result.cache
+
+# Archivos de IDE y editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Archivos de compilación y build
+/dist/
+*.min.js
+*.min.css
+
+# Archivos de base de datos
+*.sql
+*.sqlite
+*.db
+
+# Archivos de sesión y temporales
+/sessions/
+*.tmp
+*.temp
+
+# Archivos de imágenes subidas por usuarios
+/public/imagenes/*
+!/public/imagenes/.gitkeep
+
+# Archivos de configuración específicos del servidor
+.htaccess
+apache.conf
+nginx.conf
+
+# Archivos de respaldo
+*.bak
+*.backup
+*~
+
+# Archivos de dependencias de composer
+composer.lock
+package-lock.json
+yarn.lock
+
+# Archivos de pruebas
+/tests/coverage/
+.phpunit.cache/
+
+# Archivos de caché de PHP
+*.php~
+*.php.bak
+opcache.php
+
+# Archivos de configuración local
+config.local.php
+database.local.php
+
+# Archivos de certificados y claves
+*.pem
+*.key
+*.crt
+*.csr
+*.srl
+
+# Archivos de caché de navegador
+.cache/
+.npm/
+.yarn/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de respaldo de bases de datos
+*.sql.gz
+*.sql.zip
+*.sql.bak
+
+# Archivos de logs de errores
+error_log
+php_errors.log
+apache_errors.log
+
+# Archivos de caché de PHP
+/var/cache/
+*.cache.php
+
+# Archivos de sesión
+/sessions/*
+!/sessions/.gitkeep
+
+# Archivos de configuración de servidor web
+.htpasswd
+.htaccess.bak
+nginx.conf.bak
+apache.conf.bak
+
+# Archivos de respaldo de configuración
+*.conf.bak
+*.ini.bak
+*.php.bak
+
+# Archivos de caché de composer
+/vendor/cache/
+composer.phar
+
+# Archivos de caché de npm
+.npm
+.eslintcache
+.stylelintcache
+
+# Archivos de caché de PHPUnit
+.phpunit.cache/
+.phpunit.result.cache
+
+# Archivos de caché de PHP
+opcache.php
+*.opcache
+
+# Archivos de caché de IDE
+.idea/cache/
+.vscode/extensions/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos de caché de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de caché de navegador
+.cache/
+.npm/
+.yarn/
+
+# Archivos de caché de PHP
+/var/cache/
+*.cache.php
+
+# Archivos de sesión
+/sessions/*
+!/sessions/.gitkeep
+
+# Archivos de configuración de servidor web
+.htpasswd
+.htaccess.bak
+nginx.conf.bak
+apache.conf.bak
+
+# Archivos de respaldo de configuración
+*.conf.bak
+*.ini.bak
+*.php.bak
+
+# Archivos de caché de composer
+/vendor/cache/
+composer.phar
+
+# Archivos de caché de npm
+.npm
+.eslintcache
+.stylelintcache
+
+# Archivos de caché de PHPUnit
+.phpunit.cache/
+.phpunit.result.cache
+
+# Archivos de caché de PHP
+opcache.php
+*.opcache
+
+# Archivos de caché de IDE
+.idea/cache/
+.vscode/extensions/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos de caché de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/ 
