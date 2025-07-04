@@ -71,14 +71,12 @@ class ActiveRecord {
     }
 
     // Sanitizar los datos antes de guardarlos en la BD
-    public function sanitizarAtributos() {
-        $atributos = $this->atributos();
-        $sanitizado = [];
-        foreach($atributos as $key => $value ) {
-            $sanitizado[$key] = self::$db->escape_string($value);
-        }
-        return $sanitizado;
-    }
+    public function sanitizarAtributos() { 
+        $atributos = $this->atributos(); $sanitizado = []; 
+        foreach($atributos as $key => $value ) { $sanitizado[$key] = self::$db->escape_string($value); 
+    } 
+    return $sanitizado; }
+
 
     // Sincroniza BD con Objetos en memoria
     public function sincronizar($args=[]) { 
@@ -112,6 +110,13 @@ class ActiveRecord {
     // Busca un registro por su id
     public static function find($id) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE id = {$id}";
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
+    }
+
+        // Busca un registro por su id
+    public static function where($columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE {$columna} = '{$valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
