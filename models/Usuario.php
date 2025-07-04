@@ -75,7 +75,7 @@ class Usuario extends ActiveRecord {
     }
 
     public function crearToken(){
-        $this->token = uniqid();
+        $this->token = trim(uniqid());
     }
 
 

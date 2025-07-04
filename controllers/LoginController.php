@@ -9,8 +9,16 @@ use MVC\Router;
 class LoginController{
 
     public static function login(Router $router){
+        $alertas = [];
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $auth = new Usuario($_POST);
+            debuguear($auth);
+        }
         
-    $router->render('auth/login');
+        $router->render('auth/login', [
+            'alertas' => $alertas
+        ]);
     
 
     }
@@ -93,27 +101,33 @@ class LoginController{
     public static function confirmar(Router $router){
         $alertas =[];
 
+        // Verificar si viene de una confirmación exitosa
+        if(isset($_GET['exito']) && $_GET['exito'] == '1') {
+            Usuario::setAlerta('exito', 'Cuenta verificada correctamente');
+            $alertas = Usuario::getAlertas();
+            $router->render('auth/confirmar-cuenta', [
+                'alertas' => $alertas
+            ]);
+            return;
+        }
+
         $token = s($_GET['token']);
 
         $usuario = Usuario::where('token', $token);
         
 
         if (empty($usuario)){
-            //Mostrar mensaje de errror 
-            Usuario::setAlerta('error', 'Token no valido');
+            //Mostrar mensaje de error 
+            Usuario::setAlerta('error', 'Token no válido');
         }else{
             //Modificar a usuario confirmado
-
-            
             $usuario->confirmado= "1";
             $usuario->token = '';
             $usuario->guardar();
 
-            Usuario::setAlerta('exito', 'Cuenta verificada');
-                // 🔁 Redirige para evitar reuso del token
-            header('Location: /');
+            // Redirigir a una página específica para mostrar el mensaje de éxito
+            header('Location: /confirmar-cuenta?exito=1');
             exit;
-
         }
 
         $alertas = Usuario::getAlertas();
