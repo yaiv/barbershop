@@ -13,9 +13,43 @@ class LoginController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $auth = new Usuario($_POST);
-            debuguear($auth);
+
+            $alertas = $auth->validarLogin();
+
+            if(empty($alertas)){
+                //Verificar que el usuario exista
+                $usuario = Usuario::where('email', $auth->email);
+
+                if($usuario){
+                    //Verificar el password
+                   if ($usuario->comprobarPasswordAndVerificado($auth->password)){
+                    //Autenticar el usuario
+                   session_start();
+                   $_SESSION['id'] = $usuario->id;
+                   $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
+                   $_SESSION['email'] = $usuario->email;
+                   $_SESSION['login'] = true;
+
+                   //Redireccionamiento
+                   if($usuario->admin === '1'){
+                        $_SESSION['admin'] = $usuario->admin ?? null;
+
+                        header('Location: /admin');
+                   } else {
+                        header('Location: /cita');
+                   }
+
+                   
+                   }
+
+                } else {
+                    Usuario::setAlerta('error', 'Usuario no encontrado');
+                }
+            }
         }
-        
+
+        $alertas = Usuario::getAlertas();
+
         $router->render('auth/login', [
             'alertas' => $alertas
         ]);
