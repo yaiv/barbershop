@@ -27,7 +27,7 @@
         />
     </div>
 
-    <input type="submit" class="boton" value="Inicia Sesión">
+    <input type="submit" class="boton" value="Inicia Sesión" >
 </form>
 
 <div class="acciones">
