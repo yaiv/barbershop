@@ -21,7 +21,11 @@
 
         &:hover{
             cursor: pointer;
-            background-color: color.scale(v.$azul, $lightness: -30%);
+            background-color: color.scale(v.$azul, $lightness: -40%);
+        }
+        &.actual{
+            background-color: v.$blanco;
+            color: v.$azul;
         }
     }
 }
