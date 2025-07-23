@@ -26,15 +26,18 @@
                   id="nombre"
                   type="text"
                   placeholder="Tu nombre"
-                  value="<?php echo $nombre ?>"
+                  value="<?php echo $nombre; ?>"
                   disabled
-              >
+              />
           </div>
            <div class="campo">
               <label for="fecha">Fecha</label>
               <input
                   id="fecha"
-                  type="date"            >
+                  type="date"            
+                  min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>"
+                  
+                  />
           </div>
           <div class="campo">
               <label for="hora">Hora</label>
@@ -47,12 +50,12 @@
 
     </div>
     
-    <div id="paso-3" class="seccion">
+    <div id="paso-3" class="seccion contenido-resumen">
         <h2>Resumen</h2>
         <p class="text-center">Verifica que la información sea correcta</p>
 
     </div>
-    
+
      <div class="paginacion">
         <button
             id="anterior"
