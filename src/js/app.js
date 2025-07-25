@@ -3,6 +3,7 @@ let pasoInicial= 1;
 let pasoFinal = 3;
 
 const cita = {
+    id: '',
     nombre: '',
     fecha: '',
     hora: '',
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         consultarAPI(); //Conuslta la API en el backend de php 
 
+        idCliente();
         nombreCliente();    //Añade el nombre del cliente al objeto de cita
 
         seleccionarFecha(); //Añade la fecha de la cita en el objeto 
@@ -175,6 +177,10 @@ document.addEventListener('DOMContentLoaded', function(){
         //console.log(cita);
     }
 
+    function idCliente(){
+        cita.id = document.querySelector('#id').value;
+    }
+
     function nombreCliente(){
         cita.nombre = document.querySelector('#nombre').value;
         
@@ -323,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     async  function reservarCita(){
 
-        const {nombre, fecha, hora, servicios} = cita;
+        const {nombre, fecha, hora, servicios, id} = cita;
 
         const idServicios = servicios.map(servicio => servicio.id);
         //console.log(idServicios);
@@ -331,13 +337,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
         //lo que se va a mandar al servidor 
         const datos = new FormData();
-        datos.append('nombre', nombre );
         datos.append('fecha', fecha );
         datos.append('hora', hora );
+                datos.append('usuarioId', id );
         datos.append('servicios', idServicios );
 
         //console.log([...datos]);
-        
+
+        try {
+
         //Peticion hacia la API 
         const url = 'http://localhost:3000/api/citas'
 
@@ -347,7 +355,32 @@ document.addEventListener('DOMContentLoaded', function(){
         });
 
         const resultado = await respuesta.json();
-        console.log(resultado);
+        console.log(resultado.resultado);
         //console.log([...datos]);
+
+        if(resultado.resultado){
+          Swal.fire({
+          icon: "success",
+          title: "Cita Creada",
+          text: "Tu cita ha sido registrada correctamente",
+          timer: 7000, // Se cerrará automáticamente después de 3 segundos
+          showConfirmButton: true, // Muestra el botón "OK"
+          timerProgressBar: true // Muestra una barra de progreso opcional
+        }).then(() => {
+          window.location.reload();
+        });
+
+        }
+            
+        } catch (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Ups...",
+              text: "Hubo un error al guardar la cita"
+         });
+        }
+        
+      
     }
+
 
