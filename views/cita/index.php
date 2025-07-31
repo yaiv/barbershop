@@ -1,6 +1,11 @@
     <h1 class="nombre-pagina">Crear Cita</h1>
     <p class="descripcion-pagina">Elige tus servicios y coloca tus datos</p>
 
+    <div class="barra">
+        Hola: <?php echo $nombre ?? ''; ?>
+        <a class="boton" href="/logout">Cerrar Sesión</a>
+    </div>
+
 <div id="app">
     <nav class="tabs">
         <button class="actual" type="button" data-paso="1">Servicios</button>
