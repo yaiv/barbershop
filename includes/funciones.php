@@ -7,6 +7,13 @@ function debuguear($variable) : string {
     exit;
 }
 
+function esUltimo(string $actual, string $proximo) : bool {
+    if($actual !== $proximo){
+        return true;
+    }
+    return false;
+}
+
 // Escapa / Sanitizar el HTML
 function s($html) : string {
     $s = htmlspecialchars($html);
