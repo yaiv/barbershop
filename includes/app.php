@@ -1,5 +1,7 @@
 <?php 
 
+date_default_timezone_set('America/Mexico_City');
+
 require 'funciones.php';
 require 'database.php';
 require __DIR__ . '/../vendor/autoload.php';
